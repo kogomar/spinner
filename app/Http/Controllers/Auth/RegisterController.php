@@ -24,7 +24,7 @@ class RegisterController extends Controller
         $user = User::create($request->only('name', 'phone'));
         $token = Str::random(Token::TOKEN_LENGTH);
 
-        $tokenService->createToken($user->user_id, $token);
+        $tokenService->createToken($user->id, $token);
 
         return redirect()->route('game', ['token' => $token]);
     }
